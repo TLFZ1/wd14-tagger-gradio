@@ -19,5 +19,9 @@
 本脚本依赖 Python 3.10+ 环境。建议使用 Conda 创建独立的虚拟环境。
 
 ```bash
+git clone https://github.com/TLFZ1/wd14-tagger-gradio.git
 conda create -n wd14 python=3.10.8
 conda activate wd14
+cd .....\wd14-tagger-gradio
+pip install -r requirements.txt
+python wd14.py
