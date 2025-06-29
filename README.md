@@ -38,8 +38,9 @@ cd .....\wd14-tagger-gradio
 pip install -r requirements.txt
 ```
 提示: 如果下载速度过慢，可以尝试使用国内镜像，例如：
+```bash
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
-
+```
 
 ### 第四步：运行程序
 最后，启动工具的图形化界面。
