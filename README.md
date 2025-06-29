@@ -18,20 +18,20 @@
 
 建议使用 Conda 创建独立的虚拟环境。
 
-第一步：获取代码
+### 第一步：获取代码
 首先，将本仓库克隆（下载）到您的本地电脑，并进入项目目录。
 ```bash
 git clone https://github.com/TLFZ1/wd14-tagger-gradio.git
 ```
 
-第二步：创建并激活 Conda 环境
+### 第二步：创建并激活 Conda 环境
 我们为项目创建一个独立的 Python 环境，以避免与您电脑上其他项目的依赖产生冲突。
 ```bash
 conda create -n wd14 python=3.10.8
 conda activate wd14
 ```
 
-第三步：安装依赖库
+### 第三步：安装依赖库
 接着，使用 pip 安装运行此工具所必需的所有 Python 库。
 ```bash
 cd .....\wd14-tagger-gradio
@@ -41,7 +41,7 @@ pip install -r requirements.txt
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 
 
-第四步：运行程序
+### 第四步：运行程序
 最后，启动工具的图形化界面。
 ```bash
 python wd14.py
