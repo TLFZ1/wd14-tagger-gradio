@@ -1,0 +1,15 @@
+# Virtual Environments
+/wd14/
+venv/
+.venv/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+
+# Python Caches
+__pycache__/
+*.pyc
+
+# Model Cache - IMPORTANT!
+/wd14_tagger_model/

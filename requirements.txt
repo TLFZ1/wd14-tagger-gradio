@@ -1,0 +1,11 @@
+gradio==5.35.0
+huggingface_hub==0.30.2
+onnxruntime_gpu==1.21.1
+opencv_contrib_python==4.11.0.86
+opencv_python==4.11.0.86
+pandas==2.3.0
+tqdm==4.67.1
+pillow
+numpy
+#torch==2.6.0+cu124
+#python==3.10.8
