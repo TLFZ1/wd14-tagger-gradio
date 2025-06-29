@@ -16,7 +16,7 @@
 
 ## ⚙️ 环境配置
 
-本脚本依赖 Python 3.8+ 环境。建议使用 Conda 创建独立的虚拟环境。
+本脚本依赖 Python 3.10+ 环境。建议使用 Conda 创建独立的虚拟环境。
 
 ```bash
 conda create -n wd14 python=3.10.8
