@@ -2,7 +2,7 @@
 
 这是一个基于 Gradio 的图形化Web界面，用于对本地图片文件夹进行批量动漫风格的标签识别。它使用 ONNX Runtime 部署了 SmilingWolf/wd-v1-4-tagger 系列模型，并可利用 TensorRT 或 CUDA 后端进行高性能推理。
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/f7d0b747-ddf1-455b-80c9-0447aaaeaedb)
 
 
 ## ✨ 功能特性
