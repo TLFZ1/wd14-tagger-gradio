@@ -109,7 +109,8 @@ def preprocess_image(image: Image.Image, target_size: int):
 
     # 如果最长边不等于目标尺寸，则缩放图片
     if max_dim != target_size:
-        padded_image = padded_image.resize((target_size, target_size), Image.Resampling.BICUBIC)
+        # 【核心修改】将缩放算法从 BICUBIC 更改为 LANCZOS，以获得更好的图像质量
+        padded_image = padded_image.resize((target_size, target_size), Image.Resampling.LANCZOS)
 
     # 将PIL图片转换为NumPy数组，并转换为float32类型
     image_array = np.asarray(padded_image, dtype=np.float32)
@@ -181,7 +182,7 @@ class Tagger:
         print(f"正在加载 ONNX 模型: {model_path}")
         # 定义ONNX运行时的执行提供程序（Providers），按顺序尝试使用
         providers = [
-            # 【核心修改】优先尝试TensorRT，但明确关闭FP16模式，使其在FP32全精度下运行以保证结果一致性。
+            # 优先尝试TensorRT，但明确关闭FP16模式，使其在FP32全精度下运行以保证结果一致性。
             # 这既能享受到TensorRT的优化（如层融合），又能获得最精确的结果。
             ('TensorrtExecutionProvider', {'trt_fp16_enable': False, 'trt_engine_cache_enable': True, 'trt_engine_cache_path': os.path.join(os.path.dirname(model_path), 'trt_cache')}),
             # 其次尝试CUDA
