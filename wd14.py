@@ -32,7 +32,7 @@ DEFAULT_MODEL_REPO = "SmilingWolf/wd-eva02-large-tagger-v3"  # 默认使用的Hu
 DEFAULT_MODEL_DIR = "./wd14_tagger_model"  # 下载的模型文件存放的本地目录
 
 # --- 性能设置 ---
-DEFAULT_BATCH_SIZE = 64  # 默认的批处理大小，一次处理多少张图片
+DEFAULT_BATCH_SIZE = 31  # 默认的批处理大小，一次处理多少张图片
 # 关键提示：为了让“强制停止”按钮有效，必须将 Num Workers 设为 0。
 # > 0 会显著提升速度，但会导致停止按钮失效（只能刷新页面来终止）。
 DEFAULT_NUM_WORKERS = 6  # 默认的数据加载器工作进程数，用于并行加载数据
@@ -181,8 +181,9 @@ class Tagger:
         print(f"正在加载 ONNX 模型: {model_path}")
         # 定义ONNX运行时的执行提供程序（Providers），按顺序尝试使用
         providers = [
-            # 优先尝试TensorRT，开启FP16和缓存以获得最佳性能
-            ('TensorrtExecutionProvider', {'trt_fp16_enable': True, 'trt_engine_cache_enable': True, 'trt_engine_cache_path': os.path.join(os.path.dirname(model_path), 'trt_cache')}),
+            # 【核心修改】优先尝试TensorRT，但明确关闭FP16模式，使其在FP32全精度下运行以保证结果一致性。
+            # 这既能享受到TensorRT的优化（如层融合），又能获得最精确的结果。
+            ('TensorrtExecutionProvider', {'trt_fp16_enable': False, 'trt_engine_cache_enable': True, 'trt_engine_cache_path': os.path.join(os.path.dirname(model_path), 'trt_cache')}),
             # 其次尝试CUDA
             'CUDAExecutionProvider',
             # 最后使用CPU
